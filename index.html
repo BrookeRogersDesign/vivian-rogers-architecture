@@ -495,11 +495,21 @@
     margin-top: 1.5rem;
   }
 
-  .about-stats {
+  .stats-section {
+    padding: 0 3rem 8rem;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .stats-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(4, 1fr);
     gap: 3rem;
-    padding-top: 2rem;
+  }
+
+  @media (max-width: 900px) {
+    .stats-grid { grid-template-columns: 1fr 1fr; }
+    .stats-section { padding: 0 1.5rem 5rem; }
   }
 
   .stat {
@@ -896,25 +906,7 @@
 <section class="about-section" id="about">
   <div class="about-left reveal">
     <div class="about-photo">
-      <img src="Vivian_Headshot.JPG" alt="Vivian Rogers">
-    </div>
-    <div class="about-stats">
-      <div class="stat">
-        <p class="stat-number">M.Arch</p>
-        <p class="stat-label">Recent Graduate</p>
-      </div>
-      <div class="stat">
-        <p class="stat-number">LA</p>
-        <p class="stat-label">Based In</p>
-      </div>
-      <div class="stat">
-        <p class="stat-number">4+</p>
-        <p class="stat-label">Fabrication Mediums</p>
-      </div>
-      <div class="stat">
-        <p class="stat-number">2</p>
-        <p class="stat-label">Featured Projects</p>
-      </div>
+      <img src="Vivian_Headshot.jpg" alt="Vivian Rogers">
     </div>
   </div>
   <div class="about-right reveal">
@@ -923,6 +915,28 @@
     <div class="about-text">
       <p>I'm Vivian Rogers, a designer and recent M.Arch graduate based in Los Angeles with experience spanning architecture, fabrication, and material research. My work lives somewhere between technical design and playful exploration — shaped by an interest in how people experience space, texture, and the environment around them.</p>
       <p>With professional experience in architecture offices alongside hands-on work in wood, metal, ceramics, and digital fabrication labs, I approach design as both conceptual and tactile. I'm drawn to projects that balance personality with restraint and enjoy exploring ideas through making and storytelling across mediums.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Stats -->
+<section class="stats-section">
+  <div class="stats-grid reveal">
+    <div class="stat">
+      <p class="stat-number">M.Arch</p>
+      <p class="stat-label">Recent Graduate</p>
+    </div>
+    <div class="stat">
+      <p class="stat-number">LA</p>
+      <p class="stat-label">Based In</p>
+    </div>
+    <div class="stat">
+      <p class="stat-number">4+</p>
+      <p class="stat-label">Fabrication Mediums</p>
+    </div>
+    <div class="stat">
+      <p class="stat-number">2</p>
+      <p class="stat-label">Featured Projects</p>
     </div>
   </div>
 </section>

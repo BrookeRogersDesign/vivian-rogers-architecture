@@ -443,7 +443,33 @@
     margin: 0 auto;
   }
 
-  .about-left .section-label { margin-bottom: 2rem; }
+  .about-left {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  .about-photo {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    background: var(--bg-subtle);
+    overflow: hidden;
+    position: relative;
+  }
+
+  .about-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(20%);
+    transition: filter 0.5s ease;
+  }
+
+  .about-photo img:hover {
+    filter: grayscale(0%);
+  }
+
+  .about-right .section-label { margin-bottom: 2rem; }
 
   .about-title {
     font-family: var(--font-serif);
@@ -749,8 +775,7 @@
   <div class="hero-content">
     <p class="hero-eyebrow">Architecture &amp; Design Portfolio</p>
     <h1 class="hero-title">
-      <span class="line"><span>Vivian</span></span>
-      <span class="line"><span>Rogers</span></span>
+      <span class="line"><span>Vivian Rogers</span></span>
     </h1>
     <p class="hero-subtitle">Architecture rooted in material, ecology, and craft</p>
     <a href="#projects" class="hero-cta">
@@ -870,29 +895,34 @@
 <!-- About -->
 <section class="about-section" id="about">
   <div class="about-left reveal">
+    <div class="about-photo">
+      <img src="Vivian_Headshot.JPG" alt="Vivian Rogers">
+    </div>
+    <div class="about-stats">
+      <div class="stat">
+        <p class="stat-number">M.Arch</p>
+        <p class="stat-label">Recent Graduate</p>
+      </div>
+      <div class="stat">
+        <p class="stat-number">LA</p>
+        <p class="stat-label">Based In</p>
+      </div>
+      <div class="stat">
+        <p class="stat-number">4+</p>
+        <p class="stat-label">Fabrication Mediums</p>
+      </div>
+      <div class="stat">
+        <p class="stat-number">2</p>
+        <p class="stat-label">Featured Projects</p>
+      </div>
+    </div>
+  </div>
+  <div class="about-right reveal">
     <p class="section-label">About</p>
     <h2 class="about-title">Design as both <em>conceptual</em> and tactile</h2>
     <div class="about-text">
       <p>I'm Vivian Rogers, a designer and recent M.Arch graduate based in Los Angeles with experience spanning architecture, fabrication, and material research. My work lives somewhere between technical design and playful exploration — shaped by an interest in how people experience space, texture, and the environment around them.</p>
       <p>With professional experience in architecture offices alongside hands-on work in wood, metal, ceramics, and digital fabrication labs, I approach design as both conceptual and tactile. I'm drawn to projects that balance personality with restraint and enjoy exploring ideas through making and storytelling across mediums.</p>
-    </div>
-  </div>
-  <div class="about-stats reveal">
-    <div class="stat">
-      <p class="stat-number">M.Arch</p>
-      <p class="stat-label">Recent Graduate</p>
-    </div>
-    <div class="stat">
-      <p class="stat-number">LA</p>
-      <p class="stat-label">Based In</p>
-    </div>
-    <div class="stat">
-      <p class="stat-number">4+</p>
-      <p class="stat-label">Fabrication Mediums</p>
-    </div>
-    <div class="stat">
-      <p class="stat-number">2</p>
-      <p class="stat-label">Featured Projects</p>
     </div>
   </div>
 </section>
@@ -961,13 +991,28 @@
 <script>
   // ─── Loader ───
   const loaderText = document.getElementById('loaderText');
-  const letters = 'VIVIAN'.split('');
-  letters.forEach((letter, i) => {
-    const span = document.createElement('span');
-    span.textContent = letter;
-    span.style.animationDelay = `${i * 0.08}s`;
-    loaderText.appendChild(span);
+  const words = [
+    { text: 'VIVIAN', color: 'var(--text)' },
+    { text: ' ', color: 'transparent' },
+    { text: 'ROGERS', color: 'var(--text)' }
+  ];
+  let charIndex = 0;
+  words.forEach(word => {
+    word.text.split('').forEach(letter => {
+      const span = document.createElement('span');
+      span.textContent = letter;
+      span.style.animationDelay = `${charIndex * 0.06}s`;
+      span.style.color = word.color;
+      loaderText.appendChild(span);
+      charIndex++;
+    });
   });
+
+  const portfolioSpan = document.createElement('span');
+  portfolioSpan.textContent = '  PORTFOLIO';
+  portfolioSpan.style.animationDelay = `${charIndex * 0.06}s`;
+  portfolioSpan.style.color = 'rgba(26, 26, 24, 0.2)';
+  loaderText.appendChild(portfolioSpan);
 
   window.addEventListener('load', () => {
     setTimeout(() => {
